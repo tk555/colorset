@@ -6,10 +6,10 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - run: |
-        echo "# Colorset" > README.md
-        cat colorset.json |jq -r 'to_entries[]|"## \(.key)\n",.value[] as $code|"![\($code)](https://via.placeholder.com/15/\($code)/\($code).png) `\($code)`"' >> README.md
-        git config user.name github-actions
-        git config user.email github-actions@github.com
-        git add .
-        git commit -m "generated"
-        git push
+          echo "# Colorset" > README.md
+          cat colorset.json |jq -r 'to_entries[]|"## \(.key)\n",.value[] as $code|"![\($code)](https://via.placeholder.com/15/\($code)/\($code).png) `\($code)`"' >> README.md
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git add .
+          git commit -m "generated"
+          git push
