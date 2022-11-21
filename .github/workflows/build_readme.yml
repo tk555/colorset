@@ -7,7 +7,7 @@ jobs:
       - uses: actions/checkout@v3
       - run: |
           echo "# Colorset" > README.md
-          cat colorset.json |jq -r 'to_entries[]|"## \(.key)\n",.value[] as $code|"![\($code)](https://via.placeholder.com/15/\($code)/\($code).png) `\($code)`"' >> README.md
+          cat colorset.json |jq -r 'to_entries[]|"## \(.key)\n",.value[] as $code|"![\($code)](https://via.placeholder.com/15/\($code[1:])/\($code[1:]).png) `\($code)`"' >> README.md
           git config user.name github-actions
           git config user.email github-actions@github.com
           git add .
